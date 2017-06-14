@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 var restaurants = [
   { id: 0, name: 'Le Diplomate Cafe', type: 'Quick Bite', price: '$', distance: 5, address: '4237 Campus Dr. Ste B 161 Irvine, CA 92612', telephone: '(949) 854-5161', recommended: true },
   { id: 1, name: 'Mick\'s Karma Bar', type: 'Quick Bite', price: '$', distance: 4, address: '2010 Main St. Ste 165 Irvine, CA 92614', telephone: '(949) 851-6316', recommended: false },
@@ -36,6 +35,8 @@ function renderRestaurant(restaurant) {
   $name.textContent = restaurant.name
   $type.textContent = restaurant.type
   $price.textContent = restaurant.price
+
+  $name.classList.add('name')
 
   $container.appendChild($name)
   $container.appendChild($type)
