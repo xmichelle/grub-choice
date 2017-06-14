@@ -12,3 +12,38 @@ var restaurants = [
   { id: 9, name: 'Tender Greens', type: 'Salad', price: '$$', distance: 7, address: '530 Spectrum Center Dr. Irvine, CA 92618', telephone: '(949) 679-9135', recommended: false },
   { id: 10, name: 'Cream Pan', type: 'Desserts', price: '$', distance: 1, address: '602 El Camino Real Tustin, CA 92780', telephone: '(714) 665-8239', recommended: false }
 ]
+
+var $business = document.querySelector('.restaurants')
+
+function renderRecomRestaurant(recom) {
+  for (var i = 0; i < recom.length; i++) {
+    var currentRestaurant = recom[i]
+    if (recom[i].recommended === true) {
+      var $restaurant = renderRestaurant(currentRestaurant)
+      $business.appendChild($restaurant)
+    // return currentRestaurant
+    // console.log(currentRestaurant)
+    }
+  }
+}
+
+function renderRestaurant(restaurant) {
+  var $container = document.createElement('div')
+  var $name = document.createElement('h3')
+  var $type = document.createElement('p')
+  var $price = document.createElement('p')
+
+  $name.textContent = restaurant.name
+  $type.textContent = restaurant.type
+  $price.textContent = restaurant.price
+
+  $container.appendChild($name)
+  $container.appendChild($type)
+  $container.appendChild($price)
+
+  return $container
+}
+
+renderRecomRestaurant(restaurants)
+
+// console.log(renderRecomRestaurant(restaurants))
