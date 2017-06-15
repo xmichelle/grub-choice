@@ -23,8 +23,8 @@ function renderRestaurant(restaurant) {
   $name.textContent = restaurant.name
   $type.textContent = restaurant.type
   $price.textContent = restaurant.price
-  $image.setAttribute('src', restaurant.image)
 
+  $image.setAttribute('src', restaurant.image)
   $name.classList.add('name')
 
   $container.appendChild($name)
