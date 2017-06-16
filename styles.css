@@ -9,3 +9,30 @@ div.ui.container {
   position: relative;
   top: 300px;
 }
+
+@media (max-width: 991px) {
+  #address {
+    font-size: 0.85em;
+  }
+
+  #city {
+    font-size: 0.85em;
+  }
+
+  #phone {
+    font-size: 0.85em;
+  }
+}
+
+i {
+  float: left;
+}
+
+#address {
+  margin: 0;
+}
+
+#city {
+  position: relative;
+  left: 22px;
+}
