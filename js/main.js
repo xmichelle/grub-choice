@@ -39,17 +39,21 @@ function renderRestaurant(restaurant) {
   $metaContainer.classList.add('meta')
   // $description.classList.add('description')
   $extraContainer.classList.add('extra', 'content')
+  $address.classList.add('left', 'floated')
   $phone.classList.add('right', 'floated')
-  $phoneIcon.classList.add('building', 'outline', 'icon')
   $addressIcon.classList.add('call', 'square', 'icon')
+  $phoneIcon.classList.add('building', 'outline', 'icon')
+
+  $address.appendChild($addressIcon)
+  $phone.appendChild($phoneIcon)
 
   $image.setAttribute('src', restaurant.image)
   $name.textContent = restaurant.name
   $type.textContent = restaurant.type
   $price.textContent = restaurant.price
   // $description.textContent = restaurant.description
-  $phone.textContent = restaurant.telephone
   $address.textContent = restaurant.address
+  $phone.textContent = restaurant.telephone
 
   $imageContainer.appendChild($image)
   $container.appendChild($imageContainer)
@@ -61,10 +65,10 @@ function renderRestaurant(restaurant) {
   // $contentContainer.appendChild($description)
   $container.appendChild($contentContainer)
 
-  $phone.appendChild($phoneIcon)
-  $address.appendChild($addressIcon)
-  $extraContainer.appendChild($phone)
+//  $phone.appendChild($phoneIcon)
+//  $address.appendChild($addressIcon)
   $extraContainer.appendChild($address)
+  $extraContainer.appendChild($phone)
   $container.appendChild($extraContainer)
 
   return $container
