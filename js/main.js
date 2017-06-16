@@ -22,7 +22,7 @@ function renderRestaurant(restaurant) {
   var $metaContainer = document.createElement('div')
   var $type = document.createElement('a')
   var $price = document.createElement('a')
-// var $description = document.createElement('div')
+  var $description = document.createElement('div')
 
   var $extraContainer = document.createElement('div')
   var $phone = document.createElement('span')
@@ -37,7 +37,7 @@ function renderRestaurant(restaurant) {
   $contentContainer.classList.add('content')
   $name.classList.add('header')
   $metaContainer.classList.add('meta')
-  // $description.classList.add('description')
+  $description.classList.add('description')
   $extraContainer.classList.add('extra', 'content')
   $address.classList.add('left', 'floated')
   $phone.classList.add('right', 'floated')
@@ -51,7 +51,7 @@ function renderRestaurant(restaurant) {
   $name.textContent = restaurant.name
   $type.textContent = restaurant.type
   $price.textContent = restaurant.price
-  // $description.textContent = restaurant.description
+  $description.textContent = restaurant.description
   $address.textContent = restaurant.address
   $phone.textContent = restaurant.telephone
 
@@ -62,7 +62,7 @@ function renderRestaurant(restaurant) {
   $metaContainer.appendChild($type)
   $metaContainer.appendChild($price)
   $contentContainer.appendChild($metaContainer)
-  // $contentContainer.appendChild($description)
+  $contentContainer.appendChild($description)
   $container.appendChild($contentContainer)
 
 //  $phone.appendChild($phoneIcon)
