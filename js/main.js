@@ -83,3 +83,11 @@ function renderRestaurant(restaurant) {
 }
 
 displayRestaurants(restaurants, $restaurantList)
+
+// Use fade up module/transition from Semantic for more info page to appear
+// Add page dimmer (maybe blurring dimmer?) also
+// Maybe just use a modal window? (Standard modal)
+
+// Step 1: Create renderModal function
+// Step 2: Create eventlistener function
+// Step 3: Make sure to implement hover underline feature for restaurant name
