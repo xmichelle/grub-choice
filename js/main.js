@@ -117,7 +117,6 @@ function renderModal(restaurant) {
   var $descriptionContainer = document.createElement('div')
   var $menuHeader = document.createElement('div')
   var $menu = document.createElement('ul')
-  var $menuItem = document.createElement('li') // need for loop for menu items?
 
   $container.classList.add('ui', 'modal')
   $closeIcon.classList.add('close', 'icon')
@@ -132,12 +131,17 @@ function renderModal(restaurant) {
   $nameHeader.textContent = restaurant.name
 
   $menuHeader.textContent = 'Suggested Menu Items'
-  $menuItem.textContent = restaurant.menu // menu[i]? for loop?
+
+  var menuItem = restaurant.menu.split(',')
+  for (var i = 0; i < menuItem.length; i++) {
+    var $menuItem = document.createElement('li')
+    $menuItem.textContent = menuItem[i]
+    $menu.appendChild($menuItem)
+  }
 
   $container.appendChild($closeIcon)
   $container.appendChild($nameHeader)
 
-  $menu.appendChild($menuItem)
   $descriptionContainer.appendChild($menuHeader)
   $descriptionContainer.appendChild($menu)
   $imageContainer.appendChild($image)
