@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 var $restaurantList = document.querySelector('#restaurants')
 
 function displayRestaurants(restaurants, $container) {
@@ -83,6 +84,48 @@ function renderRestaurant(restaurant) {
 }
 
 displayRestaurants(restaurants, $restaurantList)
+
+function renderModal(restaurant) {
+  var $container = document.createElement('div')
+  var $closeIcon = document.createElement('i')
+  var $nameHeader = document.createElement('div')
+
+  var $imageContentContainer = document.createElement('div')
+  var $imageContainer = document.createElement('div')
+  var $image = document.createElement('img')
+  var $descriptionContainer = document.createElement('div')
+  var $menuHeader = document.createElement('div')
+  var $menu = document.createElement('ul')
+  var $menuItem = document.createElement('li')
+
+  $container.classList.add('ui', 'modal')
+  $closeIcon.classList.add('close', 'icon')
+  $nameHeader.classList.add('header')
+
+  $imageContentContainer.classList.add('image', 'content')
+  $imageContainer.classList.add('ui', 'medium', 'image')
+  $image.setAttribute('src', restaurant.image)
+  $descriptionContainer.classList.add('description')
+  $menuHeader.classList.add('ui', 'header')
+
+  $nameHeader.textContent = restaurant.name
+
+  $menuHeader.textContent = 'Suggested Menu Items'
+  $menuItem.textContent = restaurant.menu
+
+  $container.appendChild($closeIcon)
+  $container.appendChild($nameHeader)
+
+  $menu.appendChild($menuItem)
+  $descriptionContainer.appendChild($menuHeader)
+  $descriptionContainer.appendChild($menu)
+  $imageContainer.appendChild($image)
+  $imageContentContainer.appendChild($imageContainer)
+  $imageContentContainer.appendChild($descriptionContainer)
+  $container.appendChild($imageContentContainer)
+
+  return $container
+}
 
 // Use fade up module/transition from Semantic for more info page to appear
 // Add page dimmer (maybe blurring dimmer?) also
