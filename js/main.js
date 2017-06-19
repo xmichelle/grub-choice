@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 var $restaurantList = document.querySelector('#restaurants')
+var $modalContainer = document.querySelector('.modal.container')
 
 function displayRestaurants(restaurants, $container) {
   for (var i = 0; i < restaurants.length; i++) {
@@ -8,9 +9,28 @@ function displayRestaurants(restaurants, $container) {
     if (restaurants[i].recommended === true) {
       var $restaurant = renderRestaurant(currentRestaurant)
       $container.appendChild($restaurant)
+      var $modal = renderModal(currentRestaurant)
+      $modalContainer.appendChild($modal)
+      $('.ui.modal')
+      .modal('show')
     }
   }
 }
+
+// function displayModal(restaurants)
+// add header underline hover feature
+// if click listener; data-id = restaurant.id; display that modal page with correct id
+// var $modalContainer = document.querySelector('.modal.container')
+// $modalContainer.appendChild($container)
+
+var $cardContainer = document.querySelector('.ui.container')
+
+$cardContainer.addEventListener('click', function (event) {
+  var target = event.target
+  console.log(target.dataset)
+// call displayModal function here
+
+})
 
 function renderRestaurant(restaurant) {
   var $container = document.createElement('div')
@@ -39,6 +59,7 @@ function renderRestaurant(restaurant) {
 
   $contentContainer.classList.add('content')
   $name.classList.add('header')
+  $name.setAttribute('data-id', restaurant.id)
   $metaContainer.classList.add('meta')
   $description.classList.add('description')
 
@@ -96,7 +117,7 @@ function renderModal(restaurant) {
   var $descriptionContainer = document.createElement('div')
   var $menuHeader = document.createElement('div')
   var $menu = document.createElement('ul')
-  var $menuItem = document.createElement('li')
+  var $menuItem = document.createElement('li') // need for loop for menu items?
 
   $container.classList.add('ui', 'modal')
   $closeIcon.classList.add('close', 'icon')
@@ -111,7 +132,7 @@ function renderModal(restaurant) {
   $nameHeader.textContent = restaurant.name
 
   $menuHeader.textContent = 'Suggested Menu Items'
-  $menuItem.textContent = restaurant.menu
+  $menuItem.textContent = restaurant.menu // menu[i]? for loop?
 
   $container.appendChild($closeIcon)
   $container.appendChild($nameHeader)
@@ -127,6 +148,9 @@ function renderModal(restaurant) {
   return $container
 }
 
+/* $('.ui.modal')
+  .modal('show') */
+
 // Use fade up module/transition from Semantic for more info page to appear
 // Add page dimmer (maybe blurring dimmer?) also
 // Maybe just use a modal window? (Standard modal)
@@ -134,3 +158,5 @@ function renderModal(restaurant) {
 // Step 1: Create renderModal function
 // Step 2: Create eventlistener function
 // Step 3: Make sure to implement hover underline feature for restaurant name
+
+// Add popup for the type and price
