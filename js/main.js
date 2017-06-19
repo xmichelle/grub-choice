@@ -9,10 +9,6 @@ function displayRestaurants(restaurants, $container) {
     if (restaurants[i].recommended === true) {
       var $restaurant = renderRestaurant(currentRestaurant)
       $container.appendChild($restaurant)
-      var $modal = renderModal(currentRestaurant)
-      $modalContainer.appendChild($modal)
-      $('.ui.modal')
-      .modal('show')
     }
   }
 }
@@ -25,11 +21,23 @@ function displayRestaurants(restaurants, $container) {
 
 var $cardContainer = document.querySelector('.ui.container')
 
+function findRestaurant(id, restaurants) {
+  for (var i = 0; i < restaurants.length; i++) {
+    if (id === restaurants[i].id) {
+      return restaurants[i]
+    }
+  }
+}
+
+// id is going to represent the id that we want to match with the id of our list of restaurants
+
 $cardContainer.addEventListener('click', function (event) {
   var target = event.target
-  console.log(target.dataset)
-// call displayModal function here
-
+  var restaurant = findRestaurant(target.dataset.id, restaurants)
+  var $modal = renderModal(restaurant)
+  $modalContainer.appendChild($modal)
+  $('.ui.modal')
+    .modal('show')
 })
 
 function renderRestaurant(restaurant) {
