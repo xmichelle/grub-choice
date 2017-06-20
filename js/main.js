@@ -13,12 +13,6 @@ function displayRestaurants(restaurants, $container) {
   }
 }
 
-// function displayModal(restaurants)
-// add header underline hover feature
-// if click listener; data-id = restaurant.id; display that modal page with correct id
-// var $modalContainer = document.querySelector('.modal.container')
-// $modalContainer.appendChild($container)
-
 var $cardContainer = document.querySelector('.ui.container')
 
 function findRestaurant(id, restaurants) {
@@ -29,12 +23,11 @@ function findRestaurant(id, restaurants) {
   }
 }
 
-// id is going to represent the id that we want to match with the id of our list of restaurants
-
 $cardContainer.addEventListener('click', function (event) {
-  var target = event.target
-  var restaurant = findRestaurant(target.dataset.id, restaurants)
-  var $modal = renderModal(restaurant)
+  var target = event.target.dataset.id
+  var $restaurant = findRestaurant(target, restaurants)
+  var $modal = renderModal($restaurant)
+  $('.ui.modal').remove()
   $modalContainer.appendChild($modal)
   $('.ui.modal')
     .modal('show')
@@ -59,8 +52,6 @@ function renderRestaurant(restaurant) {
   var $addressIcon = document.createElement('i')
   var $phone = document.createElement('span')
   var $phoneIcon = document.createElement('i')
-
-  // add link to 'read more' in 2nd issue
 
   $container.classList.add('card')
   $imageContainer.classList.add('image')
@@ -159,13 +150,6 @@ function renderModal(restaurant) {
 
   return $container
 }
-
-/* $('.ui.modal')
-  .modal('show') */
-
-// Use fade up module/transition from Semantic for more info page to appear
-// Add page dimmer (maybe blurring dimmer?) also
-// Maybe just use a modal window? (Standard modal)
 
 // Step 1: Create renderModal function
 // Step 2: Create eventlistener function
