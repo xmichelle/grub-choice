@@ -56,3 +56,7 @@ i {
   position: relative;
   left: 22px;
 }
+
+.content .header:hover {
+  text-decoration: underline;
+}
