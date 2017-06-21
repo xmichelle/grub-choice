@@ -12,3 +12,13 @@ var restaurants = [
   { id: '9', name: 'Tender Greens', type: 'Salad', price: '$$', distance: 7, address: '530 Spectrum Center Drive', addressCity: 'Irvine, CA 92618', telephone: '(949) 679-9135', recommended: false, image: 'images/tender-greens.jpg', description: 'Tender Greens is a fine casual restaurant that combines our fine dining point of view and hospitality with a casual, quick dining atmosphere. Our restaurants serve fresh, healthy, chef-inspired, farmer\'s market sensible dishes at an affordable price in a relaxed environment.', menu: 'Backyard Marinated Steak, Herb Brushed Albacore, Kale, Butter Lettuce, Roasted Tomato Soup' },
   { id: '10', name: 'Cream Pan', type: 'Desserts', price: '$', distance: 1, address: '602 El Camino Real', addressCity: 'Tustin, CA 92780', telephone: '(714) 665-8239', recommended: false, image: 'images/cream-pan.jpg', description: 'A Japanese bakery that is known for their shockingly delicious strawberry custard croissants, baguettes, and epi bread. Cream Pan\'s goodies are reminiscent of crowded boulangeries in Paris and scream for just a little sweet butter and maybe a touch of jam before being dunked into coffee, Japanese-French style.', menu: 'Strawberry Croissant, Strawberry Banana Croissant, Bageutte, Turkey Avocado Sandwich' }
 ]
+
+var types = [
+  { name: 'American', image: 'images/american-icon.png' },
+  { name: 'Asian', image: 'images/asian-icon.png' },
+  { name: 'Desserts', image: 'images/desserts-icon.png' },
+  { name: 'Italian', image: 'images/italian-icon.png' },
+  { name: 'Quick Bite', image: 'images/quick-bite-icon.png' },
+  { name: 'Salad', image: 'images/salad-icon.png' },
+  { name: 'Vegetarian', image: 'images/vegetarian-icon.png' }
+]

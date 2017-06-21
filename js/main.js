@@ -2,6 +2,7 @@
 /* global $ */
 var $restaurantList = document.querySelector('#restaurants')
 var $modalContainer = document.querySelector('.modal.container')
+// var $dropdownTypeContainer = document.querySelector('#type')
 
 function displayRestaurants(restaurants, $container) {
   for (var i = 0; i < restaurants.length; i++) {
@@ -151,8 +152,17 @@ function renderModal(restaurant) {
   return $container
 }
 
-// function renderDropdownType(restaurant) {
+// function renderDropdownType(type) {
+//   var $container = document.createElement('div')
 //
+//   var $menu = document.createElement('div')
+//   var $item = document.createElement('div')
+//   var $image = document.createElement('img')
+//
+//   $container.classList.add('ui', 'fluid', 'selection', 'dropdown')
+//   $menu.classList.add('menu')
+//   $item.classList.add('item')
+//   $image.classList.add('ui', 'mini', 'avatar', 'image')
 // }
 
 // Quick Bite, American, Asian, Vegetarian, Italian, Salad, Desserts
