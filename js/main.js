@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
+/* global restaurants */
+/* global $ */
 var $restaurantList = document.querySelector('#restaurants')
 var $modalContainer = document.querySelector('.modal.container')
 
