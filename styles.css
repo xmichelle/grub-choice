@@ -1,3 +1,16 @@
+#background {
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  background-color: #000;
+  opacity: 0.7;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 h3.cards-header {
   width: fit-content;
   margin: 10px auto;
@@ -8,4 +21,35 @@ h3.cards-header {
 div.ui.container {
   position: relative;
   top: 300px;
+}
+
+@media (max-width: 991px) {
+  #address {
+    font-size: 0.85em;
+  }
+
+  #city {
+    font-size: 0.85em;
+  }
+
+  #phone {
+    font-size: 0.85em;
+  }
+}
+
+i {
+  float: left;
+}
+
+#address {
+  margin: 0;
+}
+
+#city {
+  position: relative;
+  left: 22px;
+}
+
+.content .header:hover {
+  text-decoration: underline;
 }
