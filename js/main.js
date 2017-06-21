@@ -1,6 +1,7 @@
 /* global restaurants */
 /* global $ */
-/* eslint-disable no-unused-vars */
+/* global types */
+
 var $restaurantList = document.querySelector('#restaurants')
 var $modalContainer = document.querySelector('.modal.container')
 var $dropdownTypeContainer = document.querySelector('#type')
@@ -17,8 +18,6 @@ function displayRestaurants(restaurants, $container) {
 
 displayRestaurants(restaurants, $restaurantList)
 
-var $cardContainer = document.querySelector('.ui.container')
-
 function findRestaurant(id, restaurants) {
   for (var i = 0; i < restaurants.length; i++) {
     if (id === restaurants[i].id) {
@@ -27,6 +26,7 @@ function findRestaurant(id, restaurants) {
   }
 }
 
+var $cardContainer = document.querySelector('.ui.container')
 $cardContainer.addEventListener('click', function (event) {
   var target = event.target.dataset.id
   var $restaurant = findRestaurant(target, restaurants)
@@ -36,6 +36,18 @@ $cardContainer.addEventListener('click', function (event) {
   $('.ui.modal')
     .modal('show')
 })
+
+function displayDropdownType(type, $container) {
+  for (var i = 0; i < type.length; i++) {
+    var currentType = type[i]
+    var $type = renderDropdownType(currentType)
+    $container.appendChild($type)
+  }
+}
+
+displayDropdownType(types, $dropdownTypeContainer)
+$('.ui.dropdown')
+ .dropdown()
 
 function renderRestaurant(restaurant) {
   var $container = document.createElement('div')
@@ -154,32 +166,20 @@ function renderModal(restaurant) {
 }
 
 function renderDropdownType(type) {
-  var $container = document.createElement('div')
 
-  var $menu = document.createElement('div')
-  var $item = document.createElement('div')
+  var $container = document.createElement('div')
   var $image = document.createElement('img')
 
-  $container.classList.add('ui', 'fluid', 'selection', 'dropdown')
-
-  $menu.classList.add('menu')
-  $item.classList.add('item')
+  $container.classList.add('item')
   $image.classList.add('ui', 'mini', 'avatar', 'image')
   $image.setAttribute('src', type.image)
 
-  var $imageText = document.createTextNode(type.name)
+  var $containerText = document.createTextNode(type.name)
 
-  $image.appendChild($imageText)
-  $item.appendChild($image)
-  $menu.appendChild($item)
-  $container.appendChild($menu)
+  $container.appendChild($image)
+  $container.appendChild($containerText)
 
   return $container
 }
 
-// Quick Bite, American, Asian, Vegetarian, Italian, Salad, Desserts
-
 // Add popup for the type and price
-
-// $('.ui.dropdown')
-//  .dropdown()
