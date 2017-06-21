@@ -37,7 +37,11 @@ div.ui.container {
   }
 }
 
-i {
+.building.outline.icon {
+  float: left;
+}
+
+.call.square.icon {
   float: left;
 }
 

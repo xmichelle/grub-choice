@@ -13,6 +13,8 @@ function displayRestaurants(restaurants, $container) {
   }
 }
 
+displayRestaurants(restaurants, $restaurantList)
+
 var $cardContainer = document.querySelector('.ui.container')
 
 function findRestaurant(id, restaurants) {
@@ -103,8 +105,6 @@ function renderRestaurant(restaurant) {
   return $container
 }
 
-displayRestaurants(restaurants, $restaurantList)
-
 function renderModal(restaurant) {
   var $container = document.createElement('div')
   var $closeIcon = document.createElement('i')
@@ -151,4 +151,13 @@ function renderModal(restaurant) {
   return $container
 }
 
+// function renderDropdownType(restaurant) {
+//
+// }
+
+// Quick Bite, American, Asian, Vegetarian, Italian, Salad, Desserts
+
 // Add popup for the type and price
+
+// $('.ui.dropdown')
+//  .dropdown()
