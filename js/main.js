@@ -151,8 +151,4 @@ function renderModal(restaurant) {
   return $container
 }
 
-// Step 1: Create renderModal function
-// Step 2: Create eventlistener function
-// Step 3: Make sure to implement hover underline feature for restaurant name
-
 // Add popup for the type and price
