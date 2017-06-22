@@ -19,9 +19,17 @@ function displayRestaurants(restaurants, $container) {
 
 displayRestaurants(restaurants, $restaurantList)
 
-function findRestaurant(id, restaurants) {
+function findRestaurantById(id, restaurants) {
   for (var i = 0; i < restaurants.length; i++) {
     if (id === restaurants[i].id) {
+      return restaurants[i]
+    }
+  }
+}
+
+function findRestaurantByType(type, restaurants) {
+  for (var i = 0; i < restaurants.length; i++) {
+    if (type === restaurants[i].type) {
       return restaurants[i]
     }
   }
@@ -30,8 +38,8 @@ function findRestaurant(id, restaurants) {
 var $cardContainer = document.querySelector('.ui.container')
 
 $cardContainer.addEventListener('click', function (event) {
-  var target = event.target.dataset.id
-  var $restaurant = findRestaurant(target, restaurants)
+  var restaurantId = event.target.dataset.id
+  var $restaurant = findRestaurantById(restaurantId, restaurants)
   var $modal = renderModal($restaurant)
   $('.ui.modal').remove()
   $modalMenuContainer.appendChild($modal)
@@ -51,29 +59,40 @@ displayDropdownType(types, $dropdownTypeContainer)
 $('.ui.dropdown')
  .dropdown()
 
-function displayRestaurantModal(restaurants, $container) {
-  for (var i = 0; i < restaurants.length; i++) {
-    var currentRestaurant = restaurants[i]
-    var $restaurants = renderRestaurant(currentRestaurant)
-    var $basicModal = document.createElement('div')
-    $basicModal.classList.add('ui', 'modal')
-    var $uiCard = document.createElement('div')
-    $uiCard.classList.add('ui', 'card')
-    $basicModal.appendChild($uiCard)
-    $basicModal.appendChild($restaurants)
-    $container.appendChild($basicModal)
+var $dropdownContainer = document.querySelector('.dropdown.container')
+
+$dropdownContainer.addEventListener('click', function (event) {
+  var restaurantType = event.target.dataset.type
+  if (restaurantType === undefined) {
+    return
   }
+  var $restaurant = findRestaurantByType(restaurantType, restaurants)
+  var $modal = renderRestaurantModal($restaurant)
+  $('.ui.modal').remove()
+  $modalRestaurantContainer.appendChild($modal)
+  $('.ui.modal')
+    .modal('show')
+})
+
+function renderRestaurantModal(restaurants) {
+  var $restaurants = renderRestaurant(restaurants)
+  var $container = document.createElement('div')
+  var $closeIcon = document.createElement('i')
+
+  $container.classList.add('ui', 'modal')
+  $closeIcon.classList.add('close', 'icon')
+  var $uiCard = document.createElement('div')
+  $uiCard.classList.add('ui', 'cards')
+
+  $container.appendChild($closeIcon)
+  $container.appendChild($uiCard)
+  $container.appendChild($restaurants)
+
+  return $container
 }
 
-displayRestaurantModal(restaurants, $modalRestaurantContainer)
-
-// create ui basic modal div, create ui centered card div, append render to ui centered card, and append ui centered card to ui basic modal
- // function that matches selected restaurant to restaurants.type and displays a random one
-// Step 1: Put renderRestaurant in modal form
-// Step 2: Create eventlistener with a random restaurant condition
-
-$('.ui.modal')
- .modal('show')
+// step 1: create function that returns all restaurants for each type
+// step 2: create a function that selects one restaurant from that array of restaurants
 
 function renderRestaurant(restaurant) {
   var $container = document.createElement('div')
@@ -101,6 +120,7 @@ function renderRestaurant(restaurant) {
   $contentContainer.classList.add('content')
   $name.classList.add('header')
   $name.setAttribute('data-id', restaurant.id)
+  $name.setAttribute('data-type', restaurant.type)
   $metaContainer.classList.add('meta')
   $description.classList.add('description')
 
@@ -197,6 +217,7 @@ function renderDropdownType(type) {
   var $image = document.createElement('img')
 
   $container.classList.add('item')
+  $container.setAttribute('data-type', type.name)
   $image.classList.add('ui', 'mini', 'avatar', 'image')
   $image.setAttribute('src', type.image)
 
