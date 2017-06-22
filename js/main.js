@@ -3,8 +3,9 @@
 /* global types */
 
 var $restaurantList = document.querySelector('#restaurants')
-var $modalContainer = document.querySelector('.modal.container')
+var $modalMenuContainer = document.querySelector('.modal.menu.container')
 var $dropdownTypeContainer = document.querySelector('#type')
+var $modalRestaurantContainer = document.querySelector('.modal.restaurant.container')
 
 function displayRestaurants(restaurants, $container) {
   for (var i = 0; i < restaurants.length; i++) {
@@ -27,12 +28,13 @@ function findRestaurant(id, restaurants) {
 }
 
 var $cardContainer = document.querySelector('.ui.container')
+
 $cardContainer.addEventListener('click', function (event) {
   var target = event.target.dataset.id
   var $restaurant = findRestaurant(target, restaurants)
   var $modal = renderModal($restaurant)
   $('.ui.modal').remove()
-  $modalContainer.appendChild($modal)
+  $modalMenuContainer.appendChild($modal)
   $('.ui.modal')
     .modal('show')
 })
@@ -48,6 +50,30 @@ function displayDropdownType(type, $container) {
 displayDropdownType(types, $dropdownTypeContainer)
 $('.ui.dropdown')
  .dropdown()
+
+function displayRestaurantModal(restaurants, $container) {
+  for (var i = 0; i < restaurants.length; i++) {
+    var currentRestaurant = restaurants[i]
+    var $restaurants = renderRestaurant(currentRestaurant)
+    var $basicModal = document.createElement('div')
+    $basicModal.classList.add('ui', 'modal')
+    var $uiCard = document.createElement('div')
+    $uiCard.classList.add('ui', 'card')
+    $basicModal.appendChild($uiCard)
+    $basicModal.appendChild($restaurants)
+    $container.appendChild($basicModal)
+  }
+}
+
+displayRestaurantModal(restaurants, $modalRestaurantContainer)
+
+// create ui basic modal div, create ui centered card div, append render to ui centered card, and append ui centered card to ui basic modal
+ // function that matches selected restaurant to restaurants.type and displays a random one
+// Step 1: Put renderRestaurant in modal form
+// Step 2: Create eventlistener with a random restaurant condition
+
+$('.ui.modal')
+ .modal('show')
 
 function renderRestaurant(restaurant) {
   var $container = document.createElement('div')
