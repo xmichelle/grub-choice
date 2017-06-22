@@ -11,6 +11,13 @@
   right: 0;
 }
 
+.dropdown.container {
+  width: 250px;
+  position: relative;
+  top: 100px;
+  left: 150px;
+}
+
 h3.cards-header {
   width: fit-content;
   margin: 10px auto;
