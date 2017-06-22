@@ -1,6 +1,7 @@
 /* global restaurants */
 /* global $ */
 /* global types */
+/* eslint-disable no-unused-vars */
 
 var $restaurantList = document.querySelector('#restaurants')
 var $modalMenuContainer = document.querySelector('.modal.menu.container')
@@ -22,14 +23,6 @@ displayRestaurants(restaurants, $restaurantList)
 function findRestaurantById(id, restaurants) {
   for (var i = 0; i < restaurants.length; i++) {
     if (id === restaurants[i].id) {
-      return restaurants[i]
-    }
-  }
-}
-
-function findRestaurantByType(type, restaurants) {
-  for (var i = 0; i < restaurants.length; i++) {
-    if (type === restaurants[i].type) {
       return restaurants[i]
     }
   }
@@ -59,30 +52,46 @@ displayDropdownType(types, $dropdownTypeContainer)
 $('.ui.dropdown')
  .dropdown()
 
-var $dropdownContainer = document.querySelector('.dropdown.container')
+// var $dropdownContainer = document.querySelector('.dropdown.container')
 
-$dropdownContainer.addEventListener('click', function (event) {
-  var restaurantType = event.target.dataset.type
-  if (restaurantType === undefined) {
-    return
+// $dropdownContainer.addEventListener('click', function (event) {
+//   var restaurantType = event.target.dataset.type
+//   if (restaurantType === undefined) {
+//     return
+//   }
+//   // var $randomRestaurant = getRandomRestaurant(restaurantType, restaurants)
+//   // var $modal = renderRestaurantModal($randomRestaurant)
+//   // $('.small.modal').remove()
+//   // $modalRestaurantContainer.appendChild($modal)
+//   // $('.small.modal')
+//   //   .modal('show')
+// })
+
+function getRestaurantsByType(type, restaurants) {
+  var matchedRestaurants = []
+  for (var i = 0; i < restaurants.length; i++) {
+    if (type === restaurants[i].type) {
+      matchedRestaurants.push(restaurants[i])
+    }
   }
-  var $restaurant = findRestaurantByType(restaurantType, restaurants)
-  var $modal = renderRestaurantModal($restaurant)
-  $('.ui.modal').remove()
-  $modalRestaurantContainer.appendChild($modal)
-  $('.ui.modal')
-    .modal('show')
-})
+  return matchedRestaurants
+}
+
+// function getRandomRestaurant(types, restaurants) {
+//   var arrayRestaurants = getRestaurantsByType(types, restaurants)
+//   var randomRestaurant = arrayRestaurants[Math.floor(Math.random() * arrayRestaurants.length)]
+//   return randomRestaurant
+// }
 
 function renderRestaurantModal(restaurants) {
   var $restaurants = renderRestaurant(restaurants)
   var $container = document.createElement('div')
   var $closeIcon = document.createElement('i')
 
-  $container.classList.add('ui', 'modal')
+  $container.classList.add('ui', 'small', 'modal')
   $closeIcon.classList.add('close', 'icon')
   var $uiCard = document.createElement('div')
-  $uiCard.classList.add('ui', 'cards')
+  $uiCard.classList.add('ui', 'card')
 
   $container.appendChild($closeIcon)
   $container.appendChild($uiCard)
@@ -90,9 +99,6 @@ function renderRestaurantModal(restaurants) {
 
   return $container
 }
-
-// step 1: create function that returns all restaurants for each type
-// step 2: create a function that selects one restaurant from that array of restaurants
 
 function renderRestaurant(restaurant) {
   var $container = document.createElement('div')
