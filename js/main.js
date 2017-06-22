@@ -1,7 +1,6 @@
 /* global restaurants */
 /* global $ */
 /* global types */
-/* eslint-disable no-unused-vars */
 
 var $restaurantList = document.querySelector('#restaurants')
 var $modalMenuContainer = document.querySelector('.modal.menu.container')
@@ -52,20 +51,20 @@ displayDropdownType(types, $dropdownTypeContainer)
 $('.ui.dropdown')
  .dropdown()
 
-// var $dropdownContainer = document.querySelector('.dropdown.container')
+var $dropdownContainer = document.querySelector('.dropdown.container')
 
-// $dropdownContainer.addEventListener('click', function (event) {
-//   var restaurantType = event.target.dataset.type
-//   if (restaurantType === undefined) {
-//     return
-//   }
-//   // var $randomRestaurant = getRandomRestaurant(restaurantType, restaurants)
-//   // var $modal = renderRestaurantModal($randomRestaurant)
-//   // $('.small.modal').remove()
-//   // $modalRestaurantContainer.appendChild($modal)
-//   // $('.small.modal')
-//   //   .modal('show')
-// })
+$dropdownContainer.addEventListener('click', function (event) {
+  var restaurantType = event.target.dataset.type
+  if (restaurantType === undefined) {
+    return
+  }
+  var $randomRestaurant = getRandomRestaurant(restaurantType, restaurants)
+  var $modal = renderRestaurantModal($randomRestaurant)
+  $('.small.modal').remove()
+  $modalRestaurantContainer.appendChild($modal)
+  $('.small.modal')
+    .modal('show')
+})
 
 function getRestaurantsByType(type, restaurants) {
   var matchedRestaurants = []
