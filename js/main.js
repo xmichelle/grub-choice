@@ -77,11 +77,11 @@ function getRestaurantsByType(type, restaurants) {
   return matchedRestaurants
 }
 
-// function getRandomRestaurant(types, restaurants) {
-//   var arrayRestaurants = getRestaurantsByType(types, restaurants)
-//   var randomRestaurant = arrayRestaurants[Math.floor(Math.random() * arrayRestaurants.length)]
-//   return randomRestaurant
-// }
+function getRandomRestaurant(types, restaurants) {
+  var arrayRestaurants = getRestaurantsByType(types, restaurants)
+  var randomRestaurant = arrayRestaurants[Math.floor(Math.random() * arrayRestaurants.length)]
+  return randomRestaurant
+}
 
 function renderRestaurantModal(restaurants) {
   var $restaurants = renderRestaurant(restaurants)
