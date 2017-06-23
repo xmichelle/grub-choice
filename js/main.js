@@ -1,7 +1,11 @@
 /* global restaurants */
 /* global $ */
+/* global types */
+
 var $restaurantList = document.querySelector('#restaurants')
-var $modalContainer = document.querySelector('.modal.container')
+var $modalMenuContainer = document.querySelector('.modal.menu.container')
+var $dropdownTypeContainer = document.querySelector('#type')
+var $modalRestaurantContainer = document.querySelector('.modal.restaurant.container')
 
 function displayRestaurants(restaurants, $container) {
   for (var i = 0; i < restaurants.length; i++) {
@@ -13,9 +17,9 @@ function displayRestaurants(restaurants, $container) {
   }
 }
 
-var $cardContainer = document.querySelector('.ui.container')
+displayRestaurants(restaurants, $restaurantList)
 
-function findRestaurant(id, restaurants) {
+function findRestaurantById(id, restaurants) {
   for (var i = 0; i < restaurants.length; i++) {
     if (id === restaurants[i].id) {
       return restaurants[i]
@@ -23,15 +27,81 @@ function findRestaurant(id, restaurants) {
   }
 }
 
+var $cardContainer = document.querySelector('.ui.container')
+
 $cardContainer.addEventListener('click', function (event) {
-  var target = event.target.dataset.id
-  var $restaurant = findRestaurant(target, restaurants)
+  var restaurantId = event.target.dataset.id
+  var $restaurant = findRestaurantById(restaurantId, restaurants)
   var $modal = renderModal($restaurant)
   $('.ui.modal').remove()
-  $modalContainer.appendChild($modal)
+  $modalMenuContainer.appendChild($modal)
   $('.ui.modal')
     .modal('show')
 })
+
+function displayDropdownType(type, $container) {
+  for (var i = 0; i < type.length; i++) {
+    var currentType = type[i]
+    var $type = renderDropdownType(currentType)
+    $container.appendChild($type)
+  }
+}
+
+displayDropdownType(types, $dropdownTypeContainer)
+$('.ui.dropdown')
+ .dropdown()
+
+var $dropdownContainer = document.querySelector('.dropdown.container')
+var restaurantType = ''
+
+$dropdownContainer.addEventListener('click', function (event) {
+  restaurantType = event.target.dataset.type
+})
+
+var $searchButton = document.querySelector('#search')
+
+$searchButton.addEventListener('click', function (event) {
+  if (restaurantType === undefined) {
+    return
+  }
+  var $randomRestaurant = getRandomRestaurant(restaurantType, restaurants)
+  var $modal = renderRestaurantModal($randomRestaurant)
+  $('.small.modal').remove()
+  $modalRestaurantContainer.appendChild($modal)
+  $('.small.modal')
+    .modal('show')
+})
+
+function getRestaurantsByType(type, restaurants) {
+  var matchedRestaurants = []
+  for (var i = 0; i < restaurants.length; i++) {
+    if (type === restaurants[i].type) {
+      matchedRestaurants.push(restaurants[i])
+    }
+  }
+  return matchedRestaurants
+}
+
+function getRandomRestaurant(types, restaurants) {
+  var arrayRestaurants = getRestaurantsByType(types, restaurants)
+  var randomRestaurant = arrayRestaurants[Math.floor(Math.random() * arrayRestaurants.length)]
+  return randomRestaurant
+}
+
+function renderRestaurantModal(restaurants) {
+  var $restaurants = renderRestaurant(restaurants)
+  $restaurants.classList.add('content')
+  var $container = document.createElement('div')
+  var $closeIcon = document.createElement('i')
+
+  $container.classList.add('ui', 'small', 'modal')
+  $closeIcon.classList.add('close', 'icon')
+
+  $container.appendChild($closeIcon)
+  $container.appendChild($restaurants)
+
+  return $container
+}
 
 function renderRestaurant(restaurant) {
   var $container = document.createElement('div')
@@ -53,12 +123,13 @@ function renderRestaurant(restaurant) {
   var $phone = document.createElement('span')
   var $phoneIcon = document.createElement('i')
 
-  $container.classList.add('card')
+  $container.classList.add('card', 'ui')
   $imageContainer.classList.add('image')
 
   $contentContainer.classList.add('content')
   $name.classList.add('header')
   $name.setAttribute('data-id', restaurant.id)
+  $name.setAttribute('data-type', restaurant.type)
   $metaContainer.classList.add('meta')
   $description.classList.add('description')
 
@@ -103,8 +174,6 @@ function renderRestaurant(restaurant) {
   return $container
 }
 
-displayRestaurants(restaurants, $restaurantList)
-
 function renderModal(restaurant) {
   var $container = document.createElement('div')
   var $closeIcon = document.createElement('i')
@@ -147,6 +216,24 @@ function renderModal(restaurant) {
   $imageContentContainer.appendChild($imageContainer)
   $imageContentContainer.appendChild($descriptionContainer)
   $container.appendChild($imageContentContainer)
+
+  return $container
+}
+
+function renderDropdownType(type) {
+
+  var $container = document.createElement('div')
+  var $image = document.createElement('img')
+
+  $container.classList.add('item')
+  $container.setAttribute('data-type', type.name)
+  $image.classList.add('ui', 'mini', 'avatar', 'image')
+  $image.setAttribute('src', type.image)
+
+  var $containerText = document.createTextNode(type.name)
+
+  $container.appendChild($image)
+  $container.appendChild($containerText)
 
   return $container
 }

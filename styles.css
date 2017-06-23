@@ -11,6 +11,19 @@
   right: 0;
 }
 
+.search.container {
+  width: 500px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
+}
+
+.dropdown.container {
+  width: 250px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
 h3.cards-header {
   width: fit-content;
   margin: 10px auto;
@@ -37,7 +50,11 @@ div.ui.container {
   }
 }
 
-i {
+.building.outline.icon {
+  float: left;
+}
+
+.call.square.icon {
   float: left;
 }
 
@@ -52,4 +69,9 @@ i {
 
 .content .header:hover {
   text-decoration: underline;
+}
+
+#search {
+  background-color: #f0f8ff;
+  color: black;
 }
