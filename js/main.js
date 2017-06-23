@@ -52,9 +52,15 @@ $('.ui.dropdown')
  .dropdown()
 
 var $dropdownContainer = document.querySelector('.dropdown.container')
+var restaurantType = ''
 
 $dropdownContainer.addEventListener('click', function (event) {
-  var restaurantType = event.target.dataset.type
+  restaurantType = event.target.dataset.type
+})
+
+var $searchButton = document.querySelector('#search')
+
+$searchButton.addEventListener('click', function (event) {
   if (restaurantType === undefined) {
     return
   }
@@ -65,8 +71,6 @@ $dropdownContainer.addEventListener('click', function (event) {
   $('.small.modal')
     .modal('show')
 })
-
-// Second event listener to just display results?
 
 function getRestaurantsByType(type, restaurants) {
   var matchedRestaurants = []
