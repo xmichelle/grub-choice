@@ -90,6 +90,7 @@ function getRandomRestaurant(types, restaurants) {
 
 function renderRestaurantModal(restaurants) {
   var $restaurants = renderRestaurant(restaurants)
+  $restaurants.classList.add('content')
   var $container = document.createElement('div')
   var $closeIcon = document.createElement('i')
 

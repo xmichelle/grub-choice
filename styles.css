@@ -11,11 +11,17 @@
   right: 0;
 }
 
-.dropdown.container {
-  width: 250px;
+.search.container {
+  width: 500px;
+  margin: 0 auto;
   position: relative;
   top: 100px;
-  left: 150px;
+}
+
+.dropdown.container {
+  width: 250px;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 h3.cards-header {
@@ -65,17 +71,7 @@ div.ui.container {
   text-decoration: underline;
 }
 
-.ui.small.modal {
-  width: 292px;
-  margin: 0;
-  position: relative;
-  bottom: 130px;
-}
-
 #search {
-  position: relative;
-  left: 1000px;
-  top: 175px;
   background-color: #f0f8ff;
   color: black;
 }

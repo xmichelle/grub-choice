@@ -10,22 +10,24 @@
 </head>
 <body>
   <img class="overlay" id="background" src="images/board-knife-background.jpg" />
-  <div class="dropdown container">
-    <div class="ui fluid selection dropdown">
-      <input type="hidden" name="user" />
-      <i class="dropdown icon"></i>
-      <div class="default text">Type
+  <div class ="search container">
+    <div class="dropdown container">
+      <div class="ui fluid selection dropdown">
+        <input type="hidden" name="user" />
+        <i class="dropdown icon"></i>
+        <div class="default text">Type
+        </div>
+        <div class="menu" id="type">
+        </div>
       </div>
-      <div class="menu" id="type">
+    </div>
+    <div class="ui animated fade button" tabindex="0" id="search">
+      <div class="visible content">Find Random Restaurant!
+      </div>
+      <div class="hidden content">Yum!
       </div>
     </div>
-  </div>
-  <div class="ui animated fade button" tabindex="0" id="search">
-    <div class="visible content">Find Random Restaurant!
-    </div>
-    <div class="hidden content">Yum!
-    </div>
-  </div>
+  </div>  
   <h3 class= "cards-header">Recommended Restaurants</h3>
   <div class="ui container">
     <div class="ui link cards three column grid" id="restaurants">
