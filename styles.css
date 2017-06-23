@@ -67,5 +67,15 @@ div.ui.container {
 
 .ui.small.modal {
   width: 292px;
-  margin: 0 auto;
+  margin: 0;
+  position: relative;
+  bottom: 130px;
+}
+
+#search {
+  position: relative;
+  left: 1000px;
+  top: 175px;
+  background-color: #f0f8ff;
+  color: black;
 }
