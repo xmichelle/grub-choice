@@ -64,3 +64,8 @@ div.ui.container {
 .content .header:hover {
   text-decoration: underline;
 }
+
+.ui.small.modal {
+  width: 292px;
+  margin: 0 auto;
+}

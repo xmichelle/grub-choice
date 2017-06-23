@@ -66,6 +66,8 @@ $dropdownContainer.addEventListener('click', function (event) {
     .modal('show')
 })
 
+// Second event listener to just display results?
+
 function getRestaurantsByType(type, restaurants) {
   var matchedRestaurants = []
   for (var i = 0; i < restaurants.length; i++) {
@@ -89,11 +91,8 @@ function renderRestaurantModal(restaurants) {
 
   $container.classList.add('ui', 'small', 'modal')
   $closeIcon.classList.add('close', 'icon')
-  var $uiCard = document.createElement('div')
-  $uiCard.classList.add('ui', 'card')
 
   $container.appendChild($closeIcon)
-  $container.appendChild($uiCard)
   $container.appendChild($restaurants)
 
   return $container
@@ -119,7 +118,7 @@ function renderRestaurant(restaurant) {
   var $phone = document.createElement('span')
   var $phoneIcon = document.createElement('i')
 
-  $container.classList.add('card')
+  $container.classList.add('card', 'ui')
   $imageContainer.classList.add('image')
 
   $contentContainer.classList.add('content')
